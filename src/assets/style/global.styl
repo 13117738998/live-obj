@@ -1,0 +1,357 @@
+@import './reset'
+@import './animation'
+@import './var'
+@import './project'
+html,body
+  height 100%
+  width 100%
+
+.danger
+  color $danger!important
+.theme,.primary
+  color $theme!important
+.warning
+  color $warning!important
+.info
+  color $info!important
+.success
+  color $success!important
+
+.page-bg
+  background-color $page-bg
+.page-content
+  background-color $page-content
+.page-dark
+  background-color $page-dark
+
+// 字号
+.fs-s
+  font-size $fs-s!important // 10px // small
+.fs-n
+  font-size $fs-n!important // 12px // normal 默认全局12px
+.fs-m
+  font-size $fs-m!important // 14px // middle
+.fs-b
+  font-size $fs-b!important // 16px // big
+.fs-l
+  font-size $fs-l!important // 18px // large
+.fs-xl
+  font-size $fs-xl!important // 26px // extra large
+.fs-xxl
+  font-size $fs-xxl!important // 30px //extra extra large
+
+// 字体颜色
+// black
+.fc-b1
+  color $fc-b1  // dark = #333
+.fc-b2
+  color $fc-b2   // middle = #666
+.fc-b3
+  color $fc-b3  // light = #999
+// white
+.fc-w1
+  color $fc-w1  // dark = #bbb
+.fc-w2
+  color $fc-w2   // middle = #ddd
+.fc-w3
+  color $fc-w3  // light = #fff
+
+// border
+$border-directions = {
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+}
+.border
+  border 1px solid $border
+.border-w
+  border 1px solid $border-w
+
+for dKey, dVal in $border-directions
+  .bd-{dKey}
+    border-{dVal} 1px solid $border
+
+for dKey, dVal in $border-directions
+  .bd-{dKey}-w
+    border-{dVal} 1px solid $border-w
+
+.border-bottom
+  border-bottom 1px solid $border
+
+// flex
+.flex
+  display flex
+.flex-1
+  flex 1 1 0%
+.flex-auto
+  flex 0 0 auto
+.flex-center
+  display flex
+  justify-content center
+  align-items center
+
+$flex-direction = {
+  r: row,
+  rr: row-reverse,
+  c: column,
+  cr: column-reverse
+}
+$flex-wrap = {
+  w: wrap,
+  n: nowrap
+}
+// .ff-rn  flex-flow row nowarp .ff-crn
+for dkey, dvalue in $flex-direction
+  for wkey, wvalue in $flex-wrap
+    .ff-{dkey}{wkey}
+      display flex
+      flex-flow dvalue wvalue
+
+$flex-percent = 2 ... 8
+for value, key in $flex-percent
+  $percent = (100/value) + '%'
+  .flex-{key + 2}
+    flex 0 0 $percent
+    width 0
+
+$flex-jc = {
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+}
+
+// jc-center
+for key, value in $flex-jc
+  .jc-{key}
+    display flex
+    justify-content: value
+
+$flex-ai = {
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch,
+}
+// ai-center
+for key, value in $flex-ai
+  .ai-{key}
+    display flex
+    align-items: value
+
+// spacing
+$spacing-types = {
+  mg: margin,
+  pd: padding,
+}
+$spacing-directions = {
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+}
+$spacing-sizes = 0 0.5 1 1.5 2 3
+
+// mg1 pd1 mgx1 pdy1
+for tKey, tVal in $spacing-types
+  for spacingVal, spacingKey in $spacing-sizes
+
+    .{tKey}{spacingKey}
+      if spacingKey
+        {tVal}: spacingVal * $fs-n
+      else // mg0 pd0
+        {tVal}: spacingVal * $fs-n!important
+
+    .{tKey}x{spacingKey}
+      {tVal}: 0 spacingVal * $fs-n
+    .{tKey}y{spacingKey}
+      {tVal}: spacingVal * $fs-n 0
+// mgt1 pdt1
+for tKey, tVal in $spacing-types
+  for dKey, dVal in $spacing-directions
+    for spacingVal, spacingKey in $spacing-sizes
+      .{tKey}{dKey}{spacingKey}
+        {tVal}-{dVal}: spacingVal * $fs-n!important
+
+// line-height
+// .lh
+for val, key in 1 1.5 2 2.5 3
+  .lh{key+1}
+    line-height val * $fs-n!important
+
+.scroll-y
+  display flex
+  flex-direction column
+  scroll('y')
+
+.scroll-x
+  display flex
+  scroll('x')
+
+// omit-2...
+$omit = ''
+$line = 2 3 4 5 6
+for num in  $line
+  $omit += '.omit-' + num + ','
+
+{$omit}
+  display -webkit-box
+  overflow hidden
+  word-break break-all
+  /*! autoprefixer: ignore next */
+  -webkit-box-orient vertical
+for num in  $line
+  .omit-{num}
+    -webkit-line-clamp num
+
+
+// 公共类
+.line-through
+  text-decoration line-through
+.clearfix
+  // *zoom 1
+  clear both
+
+.clearfix::before,
+.clearfix::after
+  content " "
+  display block
+  height 0
+  clear both
+  visibility hidden
+
+.inline-block
+  display inline-block
+.overflow-hidden
+  overflow hidden
+.fl
+  float left
+
+.fr
+  float right
+
+.hide
+  display none
+
+.hand
+  cursor pointer
+
+.omit
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+  word-break break-all
+  
+.flex-omit-x
+  width 0
+  flex 1
+  @extend .omit
+
+.flex-omit-y
+  height 0
+  flex 1
+  @extend .omit
+
+.tal
+  text-align left
+
+.tac
+  text-align center
+
+.margin-auto
+  margin auto
+
+.margin-xauto
+  margin 0 auto
+
+.margin-yauto
+  margin auto 0
+
+.tar
+  text-align right
+
+.pf
+  position fixed
+
+.pr
+  position relative!important
+
+.pa
+  position absolute!important
+
+.pac
+  position absolute!important
+  left 50%
+  top 50%
+  transform translate(-50%, -50%)
+
+.pfc
+  position fixed!important
+  left 50%
+  top 50%
+  transform translate(-50%, -50%)
+
+.pf-full
+  position fixed!important
+  left 0
+  top 0
+  right 0
+  bottom 0
+  
+.select-none
+  user-select none
+
+.pre
+  white-space pre-wrap
+
+.full
+  height 100%
+  width 100%
+
+.round
+  border-radius 50%
+
+.strong
+  font-weight 600
+
+.hover
+  hover()
+
+.hover-success
+  hover($success)
+.hover-danger
+  hover($danger)
+
+.line
+  position relative
+  &::after
+    content ''
+    position absolute
+    width 100px
+    height 1px
+    background-color #bbb
+    left -120px
+    top 50%
+  &::before
+    content ''
+    position absolute
+    width 100px
+    height 1px
+    background-color #bbb
+    right -120px
+    top 50%
+
+.list-style-none
+  list-style none
+.list-style-disc
+  list-style disc
+.list-style-circle
+  list-style circle
+.list-style-decimal
+  list-style decimal
+
+.indent
+  text-indent 2em
+

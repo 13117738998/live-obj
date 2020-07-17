@@ -1,0 +1,102 @@
+$fs-s = 10px // small
+$fs-n = 12px // normal 默认全局12px
+$fs-m = 14px // middle
+$fs-b = 16px // big
+$fs-l = 18px // large
+$fs-xl = 26px
+$fs-xxl = 30px
+$white = #fff
+// Orange hsl(25, 100%, 50%)
+$h = 210
+$s = 100%
+$l = 63%
+// $h = 25
+// $s = 100%
+// $l = 53%
+$blue = hsl($h, $s, $l)
+$theme = $blue
+$theme2 = hsl($h, $s, 69%)
+$theme3 = hsl($h, $s, 77%)
+$theme4 = hsl($h, $s, 83%)
+$theme5 = hsl($h, $s, 89%)
+$theme6 = hsl($h, $s, 95%)
+$danger = #ee0a24
+$info = #909399
+$warning = #E6A23C
+$success = #07c160
+$sidebar-bg = #22242f
+$sidebar-fc = #757993
+$submenu-fc = #595961
+$submenu-bg = #eaedf1
+$page-bg = #f8f8f8
+$page-content = #fff
+$page-dark = $theme6
+// $page-dark = #F2F6FC
+$idx-page = 8
+$idx-menu = 9
+$idx-dialog = 10
+$nav-h = 46px
+// font-color
+// black
+$fc-b1 = #333 // dark
+$fc-b2 = #666 // middle
+$fc-b3 = #999 // light
+// white
+$fc-w1 = #bbb // dark
+$fc-w2 = #ddd // middle
+$fc-w3 = #fff // light
+// border
+$border = #EBEEF5
+$border-w = #fff
+// box-shadow
+$box-shadow = 0 0 4px 0 rgba(#c8c8c8, 0.4)
+// pc 最小分辨率
+$pc-dpi = 1200px
+
+filter(isWhite)
+  backdrop-filter saturate(180%) blur(20px)
+  if isWhite
+    background-color rgba(#fff, 0.3)
+  else
+    background-color rgba(#000, 0.3)
+  
+
+bgi-center-contain(url)
+  background-image url(url)
+  background-position center
+  background-size contain
+  background-repeat no-repeat
+
+scroll(direction)
+  overflow-{direction} auto
+  -webkit-overflow-scrolling touch
+
+// scrollbar($width = 3px, $bgc = rgba(0,0,0,.2), $scrollbarTrack  = rgba(0,0,0,.05))
+// ::-webkit-scrollbar
+// width $width
+// height 3px
+// /* 定义滚动条轨道 内阴影+圆角 */
+// ::-webkit-scrollbar-track
+// border-radius 5px
+// background-color $scrollbarTrack
+// /* 定义滑块 内阴影+圆角 */
+// ::-webkit-scrollbar-thumb
+// background-color $bgc
+// border-radius 5px
+scrollbar($width = 3px, $height = 3px, $bgc = rgba(0, 0, 0, 0.2), $scrollbarTrack = rgba(0, 0, 0, 0.05))
+  ::-webkit-scrollbar
+    width $width
+    height $height
+  /* 定义滚动条轨道 内阴影+圆角 */
+  ::-webkit-scrollbar-track
+    border-radius 5px
+    background-color $scrollbarTrack
+  /* 定义滑块 内阴影+圆角 */
+  ::-webkit-scrollbar-thumb
+    background-color $bgc
+    border-radius 5px
+
+hover($color = $theme)
+  &:hover
+    color $color !important
+    cursor pointer

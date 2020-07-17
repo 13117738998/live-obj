@@ -1,0 +1,71 @@
+@keyframes icon_pointing
+  0%   {box-shadow: 0 0 0 0px rgba(160,160,160,.5);}
+  45%  {box-shadow: 0 0 0 20px rgba(160,160,160,.05);}
+  50%  {box-shadow: 0 0 0 0px rgba(160,160,160,.2);}
+  100% {box-shadow: 0 0 0 10px rgba(160,160,160,.2);}
+@keyframes icon_pointing_inset
+  0%   {box-shadow: 0 0 0 0px rgba(160,160,160,.8) inset;}
+  45%  {box-shadow: 0 0 0 10px rgba(160,160,160,.05) inset;}
+  50%  {box-shadow: 0 0 0 0px rgba(160,160,160,.6) inset;}
+  100% {box-shadow: 0 0 0 5px rgba(160,160,160,.8) inset;}
+
+@keyframes icon_bgc
+  0%,
+  100%
+    background: linear-gradient(135deg, red, orange, green, blue, purple) left center/400% 400%;
+    background-position-x: left;
+  50%
+    background-position-x: right;
+
+@keyframes scaleIn
+  0%
+    transform scale(0.7)
+    opacity 0
+  100%
+    transform scale(1)
+    opacity 1
+.scaleIn
+  animation-name scaleIn
+  animation-timing-function ease-out
+@keyframes scaleOut
+  0%
+    opacity 1
+    transform scale(1)
+  100%
+    opacity 0
+    transform scale(0.7)
+.scaleOut
+  animation-name scaleOut
+  animation-timing-function ease-out
+.scale-leave-active
+  animation scaleOut 0.35s ease-out
+.scale-enter-active
+  animation scaleIn 0.35s ease-in
+
+// vue fade-transverse
+
+.fade-transverse-leave-active,
+  position absolute
+.fade-transverse-enter
+  transform: translateY(-30px)
+  opacity 0
+.fade-transverse-leave-to
+  transform: translateY(30px)
+  opacity 0
+  
+.fade-transition-enter,.fade-transition-leave-to
+  opacity: 0
+  transform: translateY(30px)
+
+.fade-transition-leave-active
+  position: absolute
+
+// vue fade-scale
+.fade-scale-leave-active,
+.fade-scale-enter-active
+  transition: all .3s
+
+.fade-scale-enter,.fade-scale-leave-to 
+  transform: scale(0.98)
+  opacity 0
+

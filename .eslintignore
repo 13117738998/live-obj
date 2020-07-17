@@ -1,0 +1,10 @@
+# 忽略目录
+build/
+node_modules/
+dist/
+# 阿里图标
+src/assets/font/
+
+# 忽略文件
+**/*-min.js
+**/*.min.js

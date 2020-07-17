@@ -1,0 +1,123 @@
+@import './var'
+
+html, body
+  height 100%
+  width 100%
+  color $fc-b2
+  font-size $fs-n
+// 盒子阴影
+.box-shadow
+  box-shadow $box-shadow
+  &:hover
+    box-shadow 0 0 4px 0 rgba(#c8c8c8)
+// 盒子内间距
+.padding-spacing
+  padding $fs-s
+// 盒子外间距
+.margin-spacing
+  margin $fs-s
+// 盒子圆角
+.border-radius
+  border-radius 6px
+.ctrl-icon
+  color #333
+  cursor pointer
+  background-color rgba(#fff, 0.5)
+  display flex
+  align-items center
+  justify-content center
+  transition 0.3s
+  border-radius 50%
+  z-index: 10
+  &:hover
+    background-color rgba(#fff, 0.9)
+
+.title-line:before
+  content ''
+  display inline-block
+  width 3px
+  height 18px
+  margin-right 5px
+  background $theme
+
+body
+  background-color #fff
+  .press:active
+    background-color #f2f3f5
+    filter saturate(300%)
+  .w100p
+    width 100% !important
+  .h100p
+    height 100% !important
+  // w10...w90,  w100 - w500 ... h10...
+  for val in 1 .. 9
+    .w{val * 10}
+      width val * 10px !important
+    .h{val * 10}
+      height val * 10px !important
+  for val in 2 .. 20
+    .w{val * 50}
+      width val * 50px !important
+    .h{val * 50}
+      height val * 50px !important
+  .van-nav-bar__left
+    *
+      color #666666 !important
+  .van-button
+    &:hover
+      filter saturate(150%)
+    &.van-button--small
+      line-height 26px
+      height 28px
+    &.van-button--disabled
+      opacity 1
+      filter saturate(70%)
+
+  .van-button--default
+    &:hover
+      background-color #fafafa
+  .van-overlay
+    background-color rgba(0,0,0, 0.4)
+
+.pc-mode
+
+  .van-hairline--top-bottom::after, .van-hairline-unset--top-bottom::after
+    border-width 2px 0
+  
+  .van-dialog
+    padding 10px
+    border-radius 5px
+    .van-dialog__header
+      text-align left
+      padding-top 0
+      color $fc-b1
+    .van-dialog__message
+      padding 15px 0
+      display flex
+      align-items center
+      font-size 13px
+      &:before 
+        font normal normal normal 14px/1 "vant-icon"
+        font-size 20px
+        content "\F0E0"
+        color $warning
+        margin-right 8px
+    .van-dialog__footer
+      justify-content flex-end
+      padding 8px 0 0
+      .van-button
+        height: 28px;
+        line-height: 26px;
+        flex 0 0 70px
+        margin-left 10px
+        font-size 13px
+      .van-dialog__cancel
+        color: #323233;
+        background-color: #fff;
+        border: 1px solid #ebedf0;
+        border-radius: 999px;
+      .van-dialog__confirm
+        color: #fff;
+        background-color: #1989fa;
+        border: 1px solid #1989fa;
+        border-radius: 999px;
